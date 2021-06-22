@@ -1,28 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.css';
-import Feed from './components/Feed';
-import {BrowserRouter as Router , Route , Switch} from 'react-router-dom';
+import List from './components/List';
+import withListLoading from './components/withListLoading';
 
+function App() {
+  const ListLoading = withListLoading(List);
+  const [appState, setAppState] = useState({
+    loading: false,
+    repos: null,
+  });
 
-let App = () => {
-    return (
-                <React.Fragment>
-                     <Router>
-                    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-                        <Link to='/' className="navbar-brand">Social Media Feeds</Link>
-                        <ul className='navbar-nav'>
-                            <li className='nav-item'>
-                                <Link to='/feed' className='nav-link'>Feed</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                 
-                     <Switch>
-                         <Route exact path='/feed' component={Feed}/>
-                     </Switch>
-                  </Router>
-                </React.Fragment>
-            )
-};
+  useEffect(() => {
+    setAppState({ loading: true });
+    const apiUrl = `https://api.github.com/users/hacktivist123/repos`;
+    axios.get(apiUrl).then((repos) => {
+      const allRepos = repos.data;
+      setAppState({ loading: false, repos: allRepos });
+    });
+  }, [setAppState]);
+  return (
+    <div className='App'>
+      <div className='container'>
+    
+      </div>
+      <div className='repo-container'>
+        <ListLoading isLoading={appState.loading} repos={appState.repos} />
+      </div>
+      <footer>
+        <div className='footer'>
+          JazakAllah Khair {' '}
+          <span role='img' aria-label='love'>
+            💚
+          </span>{' '}
+          with by Sadaqah.io
+        </div>
+      </footer>
+    </div>
+  );
+}
+
 export default App;
