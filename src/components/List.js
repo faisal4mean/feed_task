@@ -3,23 +3,20 @@ import profileImage from "../assets/pizza.jpeg";
 
 
 const List = (props) => {
-  const { repos } = props;
+  const {repos} = props;
   if (!repos || repos.length === 0) return <p>No repos, sorry</p>;
   return (
-  
+
     <ul>
-         
-         <div className="explore_header" style={{backgroundImage: 'linear-gradient(to left, rgb(16, 47, 34) 0%, rgb(30, 154, 100) 50%, rgb(39, 144, 99) 100%), url("https://sadaqahmail.s3.us-east-2.amazonaws.com/assets/Pages/Explore/triangles.png")'}}>
-    <p className="explore_title">Campaigns Updates</p>
-    <p className="explore_subtitle">Donate Now - Help Today</p>
-  </div>
+
+
       {repos.map((repo) => {
         return (
           // <li key={repo.id} className='list'>
           //   <span className='repo-text'>{repo.name} </span>
           //   <span className='repo-description'>{repo.description}</span>
           // </li>
-         
+
           <div className="row">
             <div className="col-xl-6 m-auto">
               <div className="card">
@@ -45,7 +42,7 @@ const List = (props) => {
                       </p>
                       <p className="text-muted small">Qurbani Udhiyah for Orphans, Widows and Needy in Africa</p>
                       <p className="text-muted  globe">
-                       30 min .{" "}
+                        30 min .{" "}
                         <span>
                           <i className="fa fa-globe"></i>
                         </span>
@@ -54,7 +51,7 @@ const List = (props) => {
                         <img src={profileImage} alt="" className="img-fluid h-50 w-100" />
                       </div>
                       <p className="lead">
-                      Give the gift of Sacrifice and put a smile on the faces of orphans, widows and the needy in Africa.
+                        Give the gift of Sacrifice and put a smile on the faces of orphans, widows and the needy in Africa.
                       </p>
                       <div className="mt-4">
                         <span>
@@ -74,7 +71,7 @@ const List = (props) => {
               </div>
             </div>
           </div>
-   
+
         );
       })}
     </ul>
