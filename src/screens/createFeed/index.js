@@ -171,7 +171,7 @@ export const CreateFeed = () => {
               <Grid item xs={6}>
                 <Button variant="contained" component="label">
                   Upload Image
-                  <input
+                  <Input
                     type="file"
                     hidden
                     variant="outlined"
@@ -201,7 +201,7 @@ export const CreateFeed = () => {
               <Grid item xs={6}>
                 <Button variant="contained" component="label">
                   Upload Video
-                  <input
+                  <Input
                     type="file"
                     hidden
                     variant="outlined"
